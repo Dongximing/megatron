@@ -75,7 +75,16 @@ def generate_and_post_process(model,
             output_log_probs, tokens
 
     return None
+def featureAblation(original_input):
+    length = original_input.size(0)
+    result = []
+    for i in range(length):
+        new_tensor = original_input.clone()
+        new_tensor[i] = 0
+        result.append(new_tensor)
+    return result
 
+    return
 def generate(model,
              prompts=None,
              tokens_to_generate=0,
@@ -135,7 +144,9 @@ def generate(model,
         prompts=prompts, tokens_to_generate=tokens_to_generate, add_BOS=add_BOS)
     print("in 136 context_tokens_tensor",context_tokens_tensor)
     print("in 137 context_tokens_tensor",context_length_tensor)
-
+    candidates = featureAblation(context_tokens_tensor)
+    print("candidates----------------------------> for model explaination")
+    print(candidates)
     if tokens_to_generate == 0:
         return score_and_return_on_first_stage(
             model, context_tokens_tensor, context_length_tensor)
