@@ -18,7 +18,7 @@ from .tokenization import (
 def generate_and_post_process(model,
                               prompts=None,
                               tokens_to_generate=0,
-                              return_output_log_probs=False,
+                              return_output_log_probs=True,
                               top_k_sampling=0,
                               top_p_sampling=0.0,
                               top_p_decay=0.0,
