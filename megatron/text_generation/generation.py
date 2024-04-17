@@ -200,9 +200,9 @@ def generate_tokens_probs_and_return_on_first_stage(
                 # Sample.
                 last_token_logits = logits[:, -1, :]
                 new_sample = sample(last_token_logits,
-                                    top_k=top_k,
-                                    top_p=top_p,
-                                    temperature=temperature,
+                                    top_k=1,
+                                    top_p=0,
+                                    temperature=0.01,
                                     vocab_size=tokenizer.vocab_size)
                 if top_p > 0.0 and top_p_decay > 0.0:
                     top_p = top_p * top_p_decay
