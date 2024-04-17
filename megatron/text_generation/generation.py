@@ -188,6 +188,7 @@ def generate_tokens_probs_and_return_on_first_stage(
 
             # logits will be meanigful only in the last pipeline stage.
             logits = forward_step(tokens2use, positions2use, attention_mask2use)
+            print("logits:\n",logits)
 
             if mpu.is_pipeline_last_stage():
                 if prevent_newline_after_colon:
@@ -212,6 +213,9 @@ def generate_tokens_probs_and_return_on_first_stage(
                 started = lengths <= context_length
                 # Update the tokens.
                 tokens[started, context_length] = new_sample[started]
+                print("tokens in the loop",tokens)
+                print("started------------->",started)
+                print("context_length------------>",context_length)
 
                 # Calculate the log probabilities.
                 if return_output_log_probs:
