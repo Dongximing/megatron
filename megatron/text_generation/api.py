@@ -133,6 +133,8 @@ def generate(model,
     
     context_tokens_tensor, context_length_tensor = tokenize_prompts(
         prompts=prompts, tokens_to_generate=tokens_to_generate, add_BOS=add_BOS)
+    print("in 136 context_tokens_tensor",context_tokens_tensor)
+    print("in 137 context_tokens_tensor",context_length_tensor)
 
     if tokens_to_generate == 0:
         return score_and_return_on_first_stage(
