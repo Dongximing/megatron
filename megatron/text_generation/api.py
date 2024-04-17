@@ -79,9 +79,9 @@ def featureAblation(original_input,add_BOS):
     length = original_input.size(1)
     result = []
     for i in range(length):
+        new_tensor = original_input.clone()
         if new_tensor[:,i] == add_BOS:
             break
-        new_tensor = original_input.clone()
         new_tensor[:,i] = 0
         result.append(new_tensor)
     return result
