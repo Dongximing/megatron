@@ -51,6 +51,8 @@ def generate_and_post_process(model,
         stop_on_eol=stop_on_eol,
         prevent_newline_after_colon=prevent_newline_after_colon,
         random_seed=random_seed)
+    print("total output log prob ---------------->",output_log_probs)
+    print("logits-------------------------------->",logits)
 
     # Only post-process on first stage.
     if mpu.is_pipeline_first_stage():
