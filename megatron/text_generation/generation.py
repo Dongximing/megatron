@@ -393,10 +393,10 @@ def beam_search_and_return_on_first_stage(model, tokens, lengths, beam_size, sto
             # set inference key values to make it consistent with best beam index
             best_batches = broadcast_from_last_pipeline_stage(beam_size, torch.int64, best_batches)
             forward_step.inference_params.swap_key_value_dict(best_batches)
-
+            print("--------------++++++------------next loop------------+++++++++++++--------------------------")
             # Update the context length for the next token generation.
             prev_context_length = context_length
-            print("--------------------------next loop--------------------------------------")
+
 
         if mpu.is_pipeline_last_stage():
             # if cannot find stop token, add open beams to hyps
