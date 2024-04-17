@@ -222,6 +222,11 @@ class MegatronGenerate(Resource):
                         prevent_newline_after_colon=prevent_newline_after_colon,
                         random_seed=random_seed)
 
+                    print("the model generate score and text -------->")
+                    print("text---------->: \n",response)
+                    print("segments---------->: \n", response_seg)
+                    print("logprobs---------->: \n", response_logprobs)
+
                     return jsonify({"text": response,
                         "segments": response_seg,
                         "logprobs": response_logprobs})
