@@ -268,6 +268,7 @@ def generate_tokens_probs_and_return_on_first_stage(
                                                       tensor=done)
             if use_eod_token_for_early_termination and done:
                 break
+            print("--------------------------next loop--------------------------------------")
             
     # ===================================================
     # Update the length of based on max generated length.
