@@ -30,7 +30,7 @@ def generate_and_post_process(model,
                               stop_on_eol=False,
                               prevent_newline_after_colon=False,
                               random_seed=-1,
-                              return_logits=True):
+                              return_logits=False):
     """Run inference and post-process outputs, i.e., detokenize,
     move to cpu and convert to list."""
 
@@ -68,6 +68,7 @@ def generate_and_post_process(model,
             return prompts_plus_generations, prompts_plus_generations_segments, \
             output_log_probs, tokens, logits
         else:
+            print("this is output_log_probs",output_log_probs)
             return prompts_plus_generations, prompts_plus_generations_segments, \
             output_log_probs, tokens
 
