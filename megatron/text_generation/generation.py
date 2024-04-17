@@ -151,6 +151,7 @@ def generate_tokens_probs_and_return_on_first_stage(
 
     # Log probability of the sequence (prompt + generated tokens).
     output_log_probs = None
+    print("max_sequence_length in 154",max_sequence_length)
     output_log_probs_size = (batch_size, max_sequence_length - 1)
     # Lengths of generated seuquence including including prompts.
     generated_sequence_lengths = None
