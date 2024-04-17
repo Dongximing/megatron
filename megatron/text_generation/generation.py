@@ -396,6 +396,7 @@ def beam_search_and_return_on_first_stage(model, tokens, lengths, beam_size, sto
 
             # Update the context length for the next token generation.
             prev_context_length = context_length
+            print("--------------------------next loop--------------------------------------")
 
         if mpu.is_pipeline_last_stage():
             # if cannot find stop token, add open beams to hyps
