@@ -179,10 +179,12 @@ def generate_tokens_probs_and_return_on_first_stage(
 
             # Pick the slice that we need to pass through the network.
             tokens2use = tokens[:, prev_context_length:context_length]
-            print('model output-------------->',tokens2use)
+            print('model tokens2use -------------->',tokens2use)
             positions2use = position_ids[:, prev_context_length:context_length]
+            print("model positions2use  --------->",positions2use)
             attention_mask2use = attention_mask[
                 ..., prev_context_length:context_length, :context_length]
+            print("model attention_mask2use------->",attention_mask2use)
 
             # logits will be meanigful only in the last pipeline stage.
             logits = forward_step(tokens2use, positions2use, attention_mask2use)
