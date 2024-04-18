@@ -137,6 +137,8 @@ def generate_tokens_probs_and_return_on_first_stage_candidate(
     if max_sequence_length * batch_size > args.max_tokens_to_oom:
         raise ValueError("Too many tokens.  " + str(max_sequence_length * batch_size) + " is greater than " + str(
             args.max_tokens_to_oom))
+    target_id = target_id.repeat(batch_size, 1)
+
 
     # forward step.
     forward_step = ForwardStep(model, batch_size, max_sequence_length)
@@ -231,7 +233,7 @@ def generate_tokens_probs_and_return_on_first_stage_candidate(
                         # the token which we selected in the current logits,
                         # so shift by 1.
                         indices = torch.unsqueeze(
-                            tokens[
+                            target_id[
                             :,
                             (prev_context_length + 1):(context_length + 1)],
                             2)
