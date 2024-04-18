@@ -207,7 +207,7 @@ class MegatronGenerate(Resource):
                 else:
                     print("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
                     MegatronGenerate.send_do_generate()  # Tell other ranks we're doing generate
-                    response, response_seg, response_logprobs, tokens,baseline_output_log_probs= \
+                    response, response_seg, response_logprobs, tokens, baseline_output_log_probs= \
                         generate_and_post_process(
                         self.model,
                         prompts=prompts,
