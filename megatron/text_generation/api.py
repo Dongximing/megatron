@@ -36,7 +36,7 @@ def generate_and_post_process(model,
     move to cpu and convert to list."""
 
     # Main inference.
-    tokens, lengths, output_log_probs, logits,baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs = generate(
+    tokens, lengths, output_log_probs, baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs = generate(
         model,
         prompts=prompts,
         tokens_to_generate=tokens_to_generate,
@@ -53,6 +53,7 @@ def generate_and_post_process(model,
         prevent_newline_after_colon=prevent_newline_after_colon,
         random_seed=random_seed)
     print("total output log prob ---------------->",output_log_probs)
+    logits = None
     print("logits-------------------------------->",logits)
 
     # Only post-process on first stage.
@@ -175,7 +176,7 @@ def generate(model,
         stop_on_eol=stop_on_eol,
         prevent_newline_after_colon=prevent_newline_after_colon)
     print("----------------compare----------------")
-    return generate_tokens_probs_and_return_on_first_stage_candidate(
+    candidate_tokens, candidate_generated_sequence_lengths, candidate_output_log_probs, _ = generate_tokens_probs_and_return_on_first_stage_candidate(
         model, concatenated_tensor, candidates_context_length_tensor,
         return_output_log_probs=return_output_log_probs,
         top_k=top_k_sampling,
@@ -186,7 +187,8 @@ def generate(model,
         use_eod_token_for_early_termination=use_eod_token_for_early_termination,
         stop_on_double_eol=stop_on_double_eol,
         stop_on_eol=stop_on_eol,
-        prevent_newline_after_colon=prevent_newline_after_colon,target_id=baseline_tokens), baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs
+        prevent_newline_after_colon=prevent_newline_after_colon,target_id=baseline_tokens)
+    return candidate_tokens, candidate_generated_sequence_lengths, candidate_output_log_probs,baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs
     # return generate_tokens_probs_and_return_on_first_stage(
     #     model, context_tokens_tensor, context_length_tensor,
     #     return_output_log_probs=return_output_log_probs,
