@@ -137,7 +137,6 @@ def generate_tokens_probs_and_return_on_first_stage_candidate(
     if max_sequence_length * batch_size > args.max_tokens_to_oom:
         raise ValueError("Too many tokens.  " + str(max_sequence_length * batch_size) + " is greater than " + str(
             args.max_tokens_to_oom))
-    target_id = torch.tensor([[  40,  765,  284,  711,  329,  262, 1074,  326]], device='cuda:0')
     target_id = target_id.repeat(batch_size, 1)
     print(target_id)
 
