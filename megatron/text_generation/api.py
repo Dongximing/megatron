@@ -9,6 +9,7 @@ from megatron.core import mpu
 from .communication import broadcast_float_list
 from .generation import (
         generate_tokens_probs_and_return_on_first_stage,
+generate_tokens_probs_and_return_on_first_stage_candidate,
         score_and_return_on_first_stage,
         beam_search_and_return_on_first_stage)
 from .tokenization import (
@@ -161,7 +162,7 @@ def generate(model,
     
     # Main inference function.
     # Note that the outputs are available on the first stage.
-    return generate_tokens_probs_and_return_on_first_stage(
+    return generate_tokens_probs_and_return_on_first_stage_candidate(
         model, context_tokens_tensor, context_length_tensor,
         return_output_log_probs=return_output_log_probs,
         top_k=top_k_sampling,
