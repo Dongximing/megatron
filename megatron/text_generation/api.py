@@ -173,7 +173,7 @@ def generate(model,
         use_eod_token_for_early_termination=use_eod_token_for_early_termination,
         stop_on_double_eol=stop_on_double_eol,
         stop_on_eol=stop_on_eol,
-        prevent_newline_after_colon=prevent_newline_after_colon)
+        prevent_newline_after_colon=prevent_newline_after_colon,target_id=None)
     # return generate_tokens_probs_and_return_on_first_stage(
     #     model, context_tokens_tensor, context_length_tensor,
     #     return_output_log_probs=return_output_log_probs,
