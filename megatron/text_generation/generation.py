@@ -234,7 +234,7 @@ def generate_tokens_probs_and_return_on_first_stage_candidate(
                         # the token which we selected in the current logits,
                         # so shift by 1.
                         indices = torch.unsqueeze(
-                            target_id[
+                            tokens[
                             :,
                             (prev_context_length + 1):(context_length + 1)],
                             2)
