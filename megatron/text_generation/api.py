@@ -163,7 +163,7 @@ def generate(model,
     # Main inference function.
     # Note that the outputs are available on the first stage.
     baseline_tokens,baseline_generated_sequence_lengths, baseline_output_log_probs, _ = generate_tokens_probs_and_return_on_first_stage(
-        model, concatenated_tensor, candidates_context_length_tensor,
+        model, context_tokens_tensor, context_length_tensor,
         return_output_log_probs=return_output_log_probs,
         top_k=top_k_sampling,
         top_p=top_p_sampling,
