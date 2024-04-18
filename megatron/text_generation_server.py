@@ -229,6 +229,7 @@ class MegatronGenerate(Resource):
                     print("text---------->: \n",response)
                     print("segments---------->: \n", response_seg)
                     print("logprobs---------->: \n", response_logprobs)
+                    print("baseline_output_log_probs------>: \n",baseline_output_log_probs)
                     baseline_output_log_probs = baseline_output_log_probs.expand_as(response_logprobs)
                     different = baseline_output_log_probs - response_logprobs
 
