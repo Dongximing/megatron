@@ -162,6 +162,19 @@ def generate(model,
     
     # Main inference function.
     # Note that the outputs are available on the first stage.
+    baseline_tokens,baseline_generated_sequence_lengths, baseline_output_log_probs, _ = generate_tokens_probs_and_return_on_first_stage(
+        model, concatenated_tensor, candidates_context_length_tensor,
+        return_output_log_probs=return_output_log_probs,
+        top_k=top_k_sampling,
+        top_p=top_p_sampling,
+        top_p_decay=top_p_decay,
+        top_p_bound=top_p_bound,
+        temperature=temperature,
+        use_eod_token_for_early_termination=use_eod_token_for_early_termination,
+        stop_on_double_eol=stop_on_double_eol,
+        stop_on_eol=stop_on_eol,
+        prevent_newline_after_colon=prevent_newline_after_colon)
+    print("----------------compare----------------")
     return generate_tokens_probs_and_return_on_first_stage_candidate(
         model, concatenated_tensor, candidates_context_length_tensor,
         return_output_log_probs=return_output_log_probs,

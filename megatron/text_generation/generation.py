@@ -515,7 +515,9 @@ def generate_tokens_probs_and_return_on_first_stage(
         output_log_probs_size = (batch_size, context_length)
         output_log_probs = broadcast_from_last_to_first_pipeline_stage(
             output_log_probs_size, torch.float32, output_log_probs)
-    print("output_log_probs in 292", output_log_probs)
+    print("output_log_probs in 518", output_log_probs)
+    print("output_log_probs in 519",tokens)
+    print("output_log_probs in 520", tokens)
 
     return tokens, generated_sequence_lengths, output_log_probs, None
 
