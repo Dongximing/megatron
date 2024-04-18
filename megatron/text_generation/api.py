@@ -74,7 +74,7 @@ def generate_and_post_process(model,
         else:
             print("this is output_log_probs",output_log_probs)
             return prompts_plus_generations, prompts_plus_generations_segments, \
-            output_log_probs, tokens
+            output_log_probs, tokens,baseline_output_log_probs
 
     return None
 def featureAblation(original_input):
