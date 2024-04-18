@@ -235,7 +235,7 @@ class MegatronGenerate(Resource):
 
                     return jsonify({"text": response,
                         "segments": response_seg,
-                        "logprobs": different[:,-4:].tolist()})
+                        "logprobs": different[:,-tokens_to_generate:].tolist()})
 
             except ValueError as ve:
                 return ve.args[0]
