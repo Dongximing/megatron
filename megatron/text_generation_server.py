@@ -210,7 +210,7 @@ class MegatronGenerate(Resource):
                     response, response_seg, response_logprobs, _ , baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs= \
                         generate_and_post_process(
                         self.model,
-                        prompts=prompts,
+                        prompts=promps,
                         tokens_to_generate=tokens_to_generate,
                         return_output_log_probs=logprobs,
                         top_k_sampling=top_k,
