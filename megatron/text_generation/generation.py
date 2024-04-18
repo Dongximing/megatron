@@ -429,6 +429,8 @@ def generate_tokens_probs_and_return_on_first_stage(
                 # length, it means we have started generating tokens
                 started = lengths <= context_length
                 # Update the tokens.
+                print("new_sample",new_sample)
+                print("new_sample[started]",new_sample[started])
                 tokens[started, context_length] = new_sample[started]
                 print("tokens in the loop",tokens)
                 print("started------------->",started)
