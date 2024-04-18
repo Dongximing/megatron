@@ -229,10 +229,12 @@ class MegatronGenerate(Resource):
                     print("text---------->: \n",response)
                     print("segments---------->: \n", response_seg)
                     print("logprobs---------->: \n", response_logprobs)
+                    baseline_output_log_probs = baseline_output_log_probs.expand_as(response_logprobs)
+                    different = baseline_output_log_probs - response_logprobs
 
                     return jsonify({"text": response,
                         "segments": response_seg,
-                        "logprobs": response_logprobs.tolist()})
+                        "logprobs": different[:,-4:].tolist()})
 
             except ValueError as ve:
                 return ve.args[0]
