@@ -204,7 +204,7 @@ class MegatronGenerate(Resource):
                         "scores": response_scores})
                 else:
                     MegatronGenerate.send_do_generate()  # Tell other ranks we're doing generate
-                    response, response_seg, response_logprobs, _ = \
+                    response, response_seg, response_logprobs, _ , baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs= \
                         generate_and_post_process(
                         self.model,
                         prompts=prompts,
@@ -229,7 +229,7 @@ class MegatronGenerate(Resource):
 
                     return jsonify({"text": response,
                         "segments": response_seg,
-                        "logprobs": response_logprobs})
+                        "logprobs": response_logprobs.item()})
 
             except ValueError as ve:
                 return ve.args[0]
