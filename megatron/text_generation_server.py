@@ -198,11 +198,14 @@ class MegatronGenerate(Resource):
                         length_penalty=length_penalty,
                         prevent_newline_after_colon=prevent_newline_after_colon
                         )
+
                     
                     return jsonify({"text": response,
                         "segments": response_seg,
                         "scores": response_scores})
+
                 else:
+                    print("ffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffffff")
                     MegatronGenerate.send_do_generate()  # Tell other ranks we're doing generate
                     response, response_seg, response_logprobs, _ , baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs= \
                         generate_and_post_process(
