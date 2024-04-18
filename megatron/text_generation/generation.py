@@ -235,10 +235,11 @@ def generate_tokens_probs_and_return_on_first_stage_candidate(
                         # the token which we selected in the current logits,
                         # so shift by 1.
                         indices = torch.unsqueeze(
-                            tokens[
+                            target_id[
                             :,
                             (prev_context_length + 1):(context_length + 1)],
                             2)
+                        print("indicesindicesindices--------------------->",indices)
                         output_log_probs[:,
                         prev_context_length:context_length] = \
                             torch.gather(log_probs, 2, indices).squeeze(2)
