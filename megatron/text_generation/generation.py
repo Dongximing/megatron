@@ -139,6 +139,7 @@ def generate_tokens_probs_and_return_on_first_stage_candidate(
             args.max_tokens_to_oom))
     target_id = torch.tensor([[40, 1842,  345,   11,  314, 1842,  345]], device='cuda:0')
     target_id = target_id.repeat(batch_size, 1)
+    print(target_id)
 
 
     # forward step.
