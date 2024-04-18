@@ -148,8 +148,12 @@ def generate(model,
     print("in 136 context_tokens_tensor",context_tokens_tensor)
     print("in 137 context_tokens_tensor",context_length_tensor)
     candidates = featureAblation(context_tokens_tensor)
+    concatenated_tensor = torch.cat(candidates, dim=0)
     print("candidates----------------------------> for model explaination")
-    print(candidates)
+    candidates_context_length_tensor = context_length_tensor.repeat(concatenated_tensor.size(0))
+    print("concatenated_tensor",concatenated_tensor)
+    print("candidates_context_length_tensor",candidates_context_length_tensor)
+
     if tokens_to_generate == 0:
         return score_and_return_on_first_stage(
             model, context_tokens_tensor, context_length_tensor)
