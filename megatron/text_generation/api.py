@@ -36,7 +36,7 @@ def generate_and_post_process(model,
     move to cpu and convert to list."""
 
     # Main inference.
-    tokens, lengths, output_log_probs, logits = generate(
+    tokens, lengths, output_log_probs, logits,baseline_tokens,baseline_generated_sequence_lengths,baseline_output_log_probs = generate(
         model,
         prompts=prompts,
         tokens_to_generate=tokens_to_generate,
