@@ -59,7 +59,7 @@ def generate_and_post_process(model,
     # Only post-process on first stage.
     if mpu.is_pipeline_first_stage():
         tokens, prompts_plus_generations, prompts_plus_generations_segments = \
-            detokenize_generations(tokens, lengths, True)
+            detokenize_generations(baseline_tokens, lengths, True)
 
         if return_output_log_probs:
             output_log_probs = output_log_probs.cpu().numpy().tolist()
